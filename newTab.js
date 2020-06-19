@@ -1,6 +1,65 @@
 chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
-  grafo = response.source;
-  alert(grafo);
+  // format response to be put in sugiyama-DAG
+  let parentArray = []; // child - parent relationship
+  let recordsArray = []; // keeps track of all Records
+  let recs;
+  if (response.source && response.source.records) {
+    recs = response.source.records;
+    for (key in recs) {
+      // check if key is RecordRepresentation, not field
+      if (key.includes('UiApi::RecordRepresentation') && !key.includes('__fields__' )) {
+        // insert into recordsArray
+        if (!(key in recordsArray)) {
+          recordsArray.push(key);
+        }
+        // get all fields
+        if (recs[key]['fields']) {
+          let fields = recs[key]['fields'];
+          for (field in fields) {
+            let ref = fields[field]['__ref'];
+            // () can't exist, replace them
+            ref = ref.replace('(', '_');
+            ref = ref.replace(')', '_');
+            // add ref + parent to parent array
+            if (ref in parentArray) {
+              parentArray[ref].push(key);
+            } else {
+              parentArray[ref] = [key];
+            }
+          }
+        }
+      }
+    }
+  }
+
+  console.log('parentArray');
+  console.log(parentArray);
+  // graph structure
+  let grafo = [];
+  for (key in parentArray) {
+    let newVal = {};
+    newVal['id'] = key;
+    newVal['parentIds'] = parentArray[key];
+    grafo.push(newVal);
+  }
+  console.log('records');
+  console.log(recordsArray);
+
+  console.log('grafo');
+  alert(JSON.stringify(grafo));
+
+  // for now, DAG has to be connected
+  if (recordsArray.length == 1) {
+    grafo.push({'id':recordsArray[0], 'parentIds':[]});
+  } else {
+    let root = 'root';
+    for (let i = 0; i < recordsArray.length; i++) {
+      grafo.push({'id':recordsArray[i], 'parentIds':[root]});
+    }
+    grafo.push({'id':root, 'parentIds':[]});
+  }
+  console.log(grafo);
+
   const dag = d3.dagStratify()(grafo)
 
   d3.sugiyama()(dag);
@@ -17,13 +76,13 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
   dag.each((node, i) => {
     colorMap[node.id] = interp(i / steps);
   });
-  const nodeRadius=20;
+  const nodeRadius = 20;
   const svgSelection = d3.select('svg');
 
   const line = d3.line()
     .curve(d3.curveCatmullRom)
     .x(d => d.x * width)
-    .y(d => d.y * height);
+    .y(d => d.y * height)
 
   const g = svgSelection.append('g').attr('transform', `translate(${100},${100})`)
   const defs = g.append('defs'); // For gradients
@@ -49,6 +108,21 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
       return `url(#${gradId})`;
     });
 
+  // location for displayed value on hover
+  var div = d3.select("div").append("div")
+       .attr("class", "tooltip-donut")
+       .style("opacity", 0);
+  // get value to display on hover
+  function getValue(key) {
+    if (key.includes('__fields__' )) {
+      if (recs[key]['displayValue'] === null) {
+        return recs[key]['value'];
+      }
+      return recs[key]['displayValue'];
+    } else {
+      return 'eTag: ' + recs[key]['eTag'];
+    }
+  }
   const nodes = g.append('g')
     .selectAll('g')
     .data(descendants)
@@ -57,12 +131,34 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
     .attr('transform', ({
       x,
       y
-    }) => `translate(${x*width}, ${y*height})`);
+    }) => `translate(${x*width}, ${y*height})`)
+    // adds hover
+    .on('mouseover', function (d, i) {
+          d3.select(this).transition()
+               .duration('50')
+               .attr('opacity', '.7');
+
+           div.transition()
+                .duration(50)
+                .style("opacity", 1);
+          div.html(getValue(d.id))
+               .style("left", (d3.event.pageX + 10) + "px")
+               .style("top", (d3.event.pageY - 15) + "px");
+
+              })
+     .on('mouseout', function (d, i) {
+          d3.select(this).transition()
+               .duration('50')
+               .attr('opacity', '1');
+           div.transition()
+                .duration('50')
+                .style("opacity", 0);
+              });
+
 
   nodes.append('circle')
     .attr('r', 20)
     .attr('fill', n => colorMap[n.id]);
-    //.attr('stroke', 'black');
 
 
   // Generate arrows
@@ -93,9 +189,18 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
     .attr('stroke', 'white')
     .attr('stroke-width', 1.5);
 
+  // get text to put inside node
+  function getText(key) {
+    if (key.indexOf('__fields__') > -1) {
+      // get substring after __fields__
+      return key.substring(key.indexOf('__fields__') + ('__fields__'.length));
+    } else {
+      return recs[key]['apiName'];
+    }
+  }
   // Add text
   nodes.append('text')
-    .text(d => d.id)
+    .text(d => getText(d.id))
     .attr('font-weight', 'bold')
     .attr('font-family', 'sans-serif')
     .attr('text-anchor', 'middle')
