@@ -46,7 +46,7 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
   console.log(recordsArray);
 
   console.log('grafo');
-  alert(JSON.stringify(grafo));
+  console.log(JSON.stringify(grafo));
 
   // for now, DAG has to be connected
   if (recordsArray.length == 1) {
@@ -156,9 +156,14 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
               });
 
 
-  nodes.append('circle')
-    .attr('r', 20)
-    .attr('fill', n => colorMap[n.id]);
+  // nodes.append('circle')
+  //   .attr('r', 20)
+  //   .attr('fill', n => colorMap[n.id]);
+  // added ellipse around nodes
+  nodes.append('ellipse')
+        .attr('rx', n => 4 * getText(n.id).length)
+        .attr('ry', 15)
+        .attr('fill', n => colorMap[n.id]);
 
 
   // Generate arrows

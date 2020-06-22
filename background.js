@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         source = request.source;
         // create new tab
         chrome.tabs.create({ url: 'newTab.html' });
-        alert('in background');
+        // alert('in background');
     }
     // sent from new tab, to get the source
     if(request.action === 'getSource') {
