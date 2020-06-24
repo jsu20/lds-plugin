@@ -67,8 +67,8 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
   const links = dag.links()
   const descendants = dag.descendants();
 
-  const width = 400;
-  const height = 400;
+  const width = 4000;
+  const height = 800;
 
   const steps = dag.size();
   const interp = d3.interpolateRainbow;
@@ -119,8 +119,10 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
         return recs[key]['value'];
       }
       return recs[key]['displayValue'];
-    } else {
+    } else if (key.includes('RecordRepresentation')) {
       return 'eTag: ' + recs[key]['eTag'];
+    } else {
+      return key;
     }
   }
   const nodes = g.append('g')
@@ -199,8 +201,10 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
     if (key.indexOf('__fields__') > -1) {
       // get substring after __fields__
       return key.substring(key.indexOf('__fields__') + ('__fields__'.length));
-    } else {
+    } else if (key.includes('RecordRepresentation')) {
       return recs[key]['apiName'];
+    } else {
+      return key;
     }
   }
   // Add text
