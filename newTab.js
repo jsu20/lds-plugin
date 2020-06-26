@@ -1,10 +1,17 @@
-chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
+function createSugiyama(response) {
   // format response to be put in sugiyama-DAG
+  d3.selectAll("svg > *").remove();
+
   let parentArray = []; // child - parent relationship
   let recordsArray = []; // keeps track of all Records
   let recs;
+  let original_names = {}; // for names that had () replaced
+
   if (response.source && response.source.records) {
     recs = response.source.records;
+    console.log('recs');
+    console.log(recs);
+
     for (key in recs) {
       // check if key is RecordRepresentation, not field
       if (key.includes('UiApi::RecordRepresentation') && !key.includes('__fields__' )) {
@@ -18,8 +25,12 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
           for (field in fields) {
             let ref = fields[field]['__ref'];
             // () can't exist, replace them
-            ref = ref.replace('(', '_');
-            ref = ref.replace(')', '_');
+            if (ref.includes('(') || ref.includes(')')) {
+              let orig = ref;
+              ref = ref.replace('(', '_');
+              ref = ref.replace(')', '_');
+              original_names[ref] = orig;
+            }
             // add ref + parent to parent array
             if (ref in parentArray) {
               parentArray[ref].push(key);
@@ -45,9 +56,6 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
   console.log('records');
   console.log(recordsArray);
 
-  console.log('grafo');
-  console.log(JSON.stringify(grafo));
-
   // for now, DAG has to be connected
   if (recordsArray.length == 1) {
     grafo.push({'id':recordsArray[0], 'parentIds':[]});
@@ -58,6 +66,7 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
     }
     grafo.push({'id':root, 'parentIds':[]});
   }
+  console.log('grafo');
   console.log(grafo);
 
   const dag = d3.dagStratify()(grafo)
@@ -109,14 +118,20 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
     });
 
   // location for displayed value on hover
-  var div = d3.select("div").append("div")
+  var div = d3.select("#data")
        .attr("class", "tooltip-donut")
        .style("opacity", 0);
   // get value to display on hover
   function getValue(key) {
+    if (!(key in recs)) {
+      console.log('missing key ' + key);
+      if (key in original_names) {
+        key = original_names[key];
+      }
+    }
     if (key.includes('__fields__' )) {
       if (recs[key]['displayValue'] === null) {
-        return recs[key]['value'];
+        return recs[key]['value'] ?? key;
       }
       return recs[key]['displayValue'];
     } else if (key.includes('RecordRepresentation')) {
@@ -215,7 +230,22 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
     .attr('text-anchor', 'middle')
     .attr('alignment-baseline', 'middle')
     .attr('fill', 'white');
+}
 
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.action == 'giveSource') {
+    console.log(JSON.stringify(request));
+    createSugiyama(request);
+    // document.body.innerHTML = JSON.stringify(request);
+  }
+
+});
+
+
+chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
+  // format response to be put in sugiyama-DAG
+  createSugiyama(response);
 
 
 });

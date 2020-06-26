@@ -1,5 +1,5 @@
 // requests cache data from LDS page
-window.postMessage({ type: 'INITIAL_GET_CACHE_DATA', text: "Response from content script." }, "*");
+window.postMessage({ type: 'INITIAL_GET_CACHE_DATA', text: "From content script." }, "*");
 
 window.addEventListener("message", function (event) {
   // only accept messages from ourselves
@@ -12,7 +12,7 @@ window.addEventListener("message", function (event) {
       // get source
       source = event.data.source;
       // alert(JSON.stringify(event.data));
-      // alert('in content');
+      alert('initial cache content');
       chrome.runtime.sendMessage({action: 'initialPutSource', source: source});
     }
     // checks if is proper request
@@ -20,7 +20,7 @@ window.addEventListener("message", function (event) {
       // get source
       source = event.data.source;
       // alert(JSON.stringify(event.data));
-      // alert('in content');
+      alert('cache content');
       chrome.runtime.sendMessage({action: 'putSource', source: source});
     }
   }
