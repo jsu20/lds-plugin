@@ -232,19 +232,25 @@ function createSugiyama(response) {
     .attr('fill', 'white');
 }
 
+// stores tabId that opened this devtools window
+let tabId = null;
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  if (request.action == 'giveSource') {
+  if (request.tabId == tabId && request.action == 'giveSource') {
+    alert('giveSource');
+    alert(tabId);
     console.log(JSON.stringify(request));
     createSugiyama(request);
-    // document.body.innerHTML = JSON.stringify(request);
   }
 
 });
 
-
+//
 chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
   // format response to be put in sugiyama-DAG
+  alert('getSource devtools');
+  alert(response.tabId);
+  tabId = response.tabId;
   createSugiyama(response);
 
 

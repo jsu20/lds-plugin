@@ -1,6 +1,6 @@
 // requests cache data from LDS page
 window.postMessage({ type: 'INITIAL_GET_CACHE_DATA', text: "From content script." }, "*");
-
+alert('content');
 window.addEventListener("message", function (event) {
   // only accept messages from ourselves
   if (event.source !== window && event.source !== window.frames[0])
