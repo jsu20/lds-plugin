@@ -1,6 +1,6 @@
 chrome.devtools.panels.create("LDS Cache Visualization",
     null,
-    "newTab.html",
+    "panel.html",
     function(panel) {
       // code invoked on panel creation
     }

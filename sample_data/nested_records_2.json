@@ -1,0 +1,258 @@
+{
+  "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__c": {
+    "displayValue": null,
+    "value": "a02RM00000081S9YAI"
+  },
+  "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__Id": {
+    "displayValue": null,
+    "value": "a02RM00000081S9YAI"
+  },
+  "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__c": {
+    "displayValue": null,
+    "value": "a00RM0000008EhHYAU"
+  },
+  "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Id": {
+    "displayValue": null,
+    "value": "a00RM0000008EhHYAU"
+  },
+  "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__c": {
+    "displayValue": null,
+    "value": "006RM000003JZMkYAO"
+  },
+  "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Id": {
+    "displayValue": null,
+    "value": "001RM000004XMZ5YAO"
+  },
+  "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Name": {
+    "displayValue": null,
+    "value": "foo"
+  },
+  "UiApi::RecordRepresentation:001RM000004XMZ5YAO": {
+    "apiName": "Account",
+    "childRelationships": {},
+    "eTag": "81921ed292cad1b6f9bc8f202857e8cf",
+    "fields": {
+      "Id": {
+        "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Id"
+      },
+      "Name": {
+        "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Name"
+      },
+      "OperatingHours": {
+        "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__OperatingHours"
+      },
+      "OperatingHoursId": {
+        "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__OperatingHoursId"
+      }
+    },
+    "id": "001RM000004XMZ5YAO",
+    "lastModifiedById": "005RM000001stMBYAY",
+    "lastModifiedDate": "2019-10-24T18:59:40.000Z",
+    "recordTypeId": "012RM000000DBJDYA4",
+    "recordTypeInfo": {
+      "available": true,
+      "defaultRecordTypeMapping": true,
+      "master": false,
+      "name": "y",
+      "recordTypeId": "012RM000000DBJDYA4"
+    },
+    "systemModstamp": "2019-10-24T18:59:41.000Z",
+    "weakEtag": 1571943581000
+  },
+  "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Account": {
+    "displayValue": "foo",
+    "value": {
+      "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO"
+    }
+  },
+  "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__AccountId": {
+    "displayValue": null,
+    "value": "001RM000004XMZ5YAO"
+  },
+  "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Id": {
+    "displayValue": null,
+    "value": "006RM000003JZMkYAO"
+  },
+  "UiApi::RecordRepresentation:006RM000003JZMkYAO": {
+    "apiName": "Opportunity",
+    "childRelationships": {},
+    "eTag": "0fc239e0dcc4ffb2f81e96b28568aa53",
+    "fields": {
+      "Account": {
+        "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Account"
+      },
+      "AccountId": {
+        "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__AccountId"
+      },
+      "Id": {
+        "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Id"
+      }
+    },
+    "id": "006RM000003JZMkYAO",
+    "lastModifiedById": null,
+    "lastModifiedDate": null,
+    "recordTypeId": "012RM000000DBJIYA4",
+    "recordTypeInfo": null,
+    "systemModstamp": null,
+    "weakEtag": 0
+  },
+  "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__r": {
+    "displayValue": null,
+    "value": {
+      "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO"
+    }
+  },
+  "UiApi::RecordRepresentation:a00RM0000008EhHYAU": {
+    "apiName": "TestA__c",
+    "childRelationships": {},
+    "eTag": "90e408b0a1b6595946d45e753070444a",
+    "fields": {
+      "Id": {
+        "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Id"
+      },
+      "Opportunity__c": {
+        "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__c"
+      },
+      "Opportunity__r": {
+        "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__r"
+      }
+    },
+    "id": "a00RM0000008EhHYAU",
+    "lastModifiedById": null,
+    "lastModifiedDate": null,
+    "recordTypeId": "012RM000000DBJ3YAO",
+    "recordTypeInfo": null,
+    "systemModstamp": null,
+    "weakEtag": 0
+  },
+  "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__r": {
+    "displayValue": null,
+    "value": {
+      "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU"
+    }
+  },
+  "UiApi::RecordRepresentation:a02RM00000081S9YAI": {
+    "apiName": "TestC__c",
+    "childRelationships": {},
+    "eTag": "612a7b93f6d8d1ca725c6d0b2e05e99f",
+    "fields": {
+      "Id": {
+        "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__Id"
+      },
+      "TestA__c": {
+        "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__c"
+      },
+      "TestA__r": {
+        "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__r"
+      }
+    },
+    "id": "a02RM00000081S9YAI",
+    "lastModifiedById": "005RM000001stMBYAY",
+    "lastModifiedDate": "2019-10-24T20:20:31.000Z",
+    "recordTypeId": "012000000000000AAA",
+    "recordTypeInfo": null,
+    "systemModstamp": "2019-10-24T20:20:31.000Z",
+    "weakEtag": 1571948431000
+  },
+  "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__r": {
+    "displayValue": null,
+    "value": {
+      "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI"
+    }
+  },
+  "UiApi::RecordRepresentation:a03RM0000004t2LYAQ": {
+    "apiName": "TestD__c",
+    "childRelationships": {},
+    "eTag": "37ecc5400ba0a5fc5eb8f5209a3ca43a",
+    "fields": {
+      "TestC__c": {
+        "__ref": "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__c"
+      },
+      "TestC__r": {
+        "__ref": "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__r"
+      }
+    },
+    "id": "a03RM0000004t2LYAQ",
+    "lastModifiedById": "005RM000001stMBYAY",
+    "lastModifiedDate": "2019-10-24T21:45:31.000Z",
+    "recordTypeId": "012000000000000AAA",
+    "recordTypeInfo": null,
+    "systemModstamp": "2019-10-24T21:45:31.000Z",
+    "weakEtag": 1571953531000
+  },
+  "UiApi::RecordRepresentation:005RM000001stMBYAY__fields__Id": {
+    "displayValue": null,
+    "value": "005RM000001stMBYAY"
+  },
+  "UiApi::RecordRepresentation:005RM000001stMBYAY__fields__Name": {
+    "displayValue": null,
+    "value": "Admin User"
+  },
+  "UiApi::RecordRepresentation:005RM000001stMBYAY": {
+    "apiName": "User",
+    "childRelationships": {},
+    "eTag": "879d4793412693066cdf5ab780504b65",
+    "fields": {
+      "Id": {
+        "__ref": "UiApi::RecordRepresentation:005RM000001stMBYAY__fields__Id"
+      },
+      "Name": {
+        "__ref": "UiApi::RecordRepresentation:005RM000001stMBYAY__fields__Name"
+      }
+    },
+    "id": "005RM000001stMBYAY",
+    "lastModifiedById": "005RM000001stMBYAY",
+    "lastModifiedDate": "2019-06-04T19:07:01.000Z",
+    "recordTypeId": null,
+    "recordTypeInfo": null,
+    "systemModstamp": "2019-10-24T18:51:38.000Z",
+    "weakEtag": 1571943098000
+  },
+  "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__CreatedBy": {
+    "displayValue": "Admin User",
+    "value": {
+      "__ref": "UiApi::RecordRepresentation:005RM000001stMBYAY"
+    }
+  },
+  "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__CreatedById": {
+    "displayValue": null,
+    "value": "005RM000001stMBYAY"
+  },
+  "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__Id": {
+    "displayValue": null,
+    "value": "0OHRM0000000D014AE"
+  },
+  "UiApi::RecordRepresentation:0OHRM0000000D014AE": {
+    "apiName": "OperatingHours",
+    "childRelationships": {},
+    "eTag": "af2b1944417ae7ee9de4d6bcd06bd800",
+    "fields": {
+      "CreatedBy": {
+        "__ref": "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__CreatedBy"
+      },
+      "CreatedById": {
+        "__ref": "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__CreatedById"
+      },
+      "Id": {
+        "__ref": "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__Id"
+      }
+    },
+    "id": "0OHRM0000000D014AE",
+    "lastModifiedById": "005RM000001stMBYAY",
+    "lastModifiedDate": "2019-10-24T18:57:03.000Z",
+    "recordTypeId": null,
+    "recordTypeInfo": null,
+    "systemModstamp": "2019-10-24T18:57:03.000Z",
+    "weakEtag": 1571943423000
+  },
+  "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__OperatingHours": {
+    "displayValue": null,
+    "value": {
+      "__ref": "UiApi::RecordRepresentation:0OHRM0000000D014AE"
+    }
+  },
+  "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__OperatingHoursId": {
+    "displayValue": null,
+    "value": "0OHRM0000000D014AE"
+  }
+}
