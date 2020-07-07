@@ -20,7 +20,13 @@ window.addEventListener("message", function (event) {
       // get source
       source = event.data.source;
       // alert(JSON.stringify(event.data));
-      alert('cache content');
+      // alert('cache content');
+      args = event.data.keys;
+      // alert(JSON.stringify(args));
+      console.log('args');
+      console.log(args);
+      method = event.data.method;
+      // alert(method);
       chrome.runtime.sendMessage({action: 'putSource', source: source});
     }
   }

@@ -1,449 +1,18 @@
-let treeData = {
-  "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__c": {
-    "displayValue": null,
-    "value": "a02RM00000081S9YAI"
-  },
-  "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__Id": {
-    "displayValue": null,
-    "value": "a02RM00000081S9YAI"
-  },
-  "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__c": {
-    "displayValue": null,
-    "value": "a00RM0000008EhHYAU"
-  },
-  "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Id": {
-    "displayValue": null,
-    "value": "a00RM0000008EhHYAU"
-  },
-  "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__c": {
-    "displayValue": null,
-    "value": "006RM000003JZMkYAO"
-  },
-  "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Id": {
-    "displayValue": null,
-    "value": "001RM000004XMZ5YAO"
-  },
-  "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Name": {
-    "displayValue": null,
-    "value": "foo"
-  },
-  "UiApi::RecordRepresentation:001RM000004XMZ5YAO": {
-    "apiName": "Account",
-    "childRelationships": {},
-    "eTag": "c878d41afe69814acb5779048dbe82e5",
-    "fields": {
-      "Id": {
-        "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Id"
-      },
-      "Name": {
-        "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Name"
-      }
-    },
-    "id": "001RM000004XMZ5YAO",
-    "lastModifiedById": "005RM000001stMBYAY",
-    "lastModifiedDate": "2019-10-24T18:59:40.000Z",
-    "recordTypeId": "012RM000000DBJDYA4",
-    "recordTypeInfo": null,
-    "systemModstamp": "2019-10-24T18:59:41.000Z",
-    "weakEtag": 1571943581000
-  },
-  "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Account": {
-    "displayValue": "foo",
-    "value": {
-      "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO"
-    }
-  },
-  "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__AccountId": {
-    "displayValue": null,
-    "value": "001RM000004XMZ5YAO"
-  },
-  "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Id": {
-    "displayValue": null,
-    "value": "006RM000003JZMkYAO"
-  },
-  "UiApi::RecordRepresentation:006RM000003JZMkYAO": {
-    "apiName": "Opportunity",
-    "childRelationships": {},
-    "eTag": "0fc239e0dcc4ffb2f81e96b28568aa53",
-    "fields": {
-      "Account": {
-        "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Account"
-      },
-      "AccountId": {
-        "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__AccountId"
-      },
-      "Id": {
-        "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Id"
-      }
-    },
-    "id": "006RM000003JZMkYAO",
-    "lastModifiedById": null,
-    "lastModifiedDate": null,
-    "recordTypeId": "012RM000000DBJIYA4",
-    "recordTypeInfo": null,
-    "systemModstamp": null,
-    "weakEtag": 0
-  },
-  "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__r": {
-    "displayValue": null,
-    "value": {
-      "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO"
-    }
-  },
-  "UiApi::RecordRepresentation:a00RM0000008EhHYAU": {
-    "apiName": "TestA__c",
-    "childRelationships": {},
-    "eTag": "90e408b0a1b6595946d45e753070444a",
-    "fields": {
-      "Id": {
-        "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Id"
-      },
-      "Opportunity__c": {
-        "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__c"
-      },
-      "Opportunity__r": {
-        "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__r"
-      }
-    },
-    "id": "a00RM0000008EhHYAU",
-    "lastModifiedById": null,
-    "lastModifiedDate": null,
-    "recordTypeId": "012RM000000DBJ3YAO",
-    "recordTypeInfo": null,
-    "systemModstamp": null,
-    "weakEtag": 0
-  },
-  "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__r": {
-    "displayValue": null,
-    "value": {
-      "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU"
-    }
-  },
-  "UiApi::RecordRepresentation:a02RM00000081S9YAI": {
-    "apiName": "TestC__c",
-    "childRelationships": {},
-    "eTag": "612a7b93f6d8d1ca725c6d0b2e05e99f",
-    "fields": {
-      "Id": {
-        "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__Id"
-      },
-      "TestA__c": {
-        "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__c"
-      },
-      "TestA__r": {
-        "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__r"
-      }
-    },
-    "id": "a02RM00000081S9YAI",
-    "lastModifiedById": "005RM000001stMBYAY",
-    "lastModifiedDate": "2019-10-24T20:20:31.000Z",
-    "recordTypeId": "012000000000000AAA",
-    "recordTypeInfo": null,
-    "systemModstamp": "2019-10-24T20:20:31.000Z",
-    "weakEtag": 1571948431000
-  },
-  "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__r": {
-    "displayValue": null,
-    "value": {
-      "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI"
-    }
-  },
-  "UiApi::RecordRepresentation:a03RM0000004t2LYAQ": {
-    "apiName": "TestD__c",
-    "childRelationships": {},
-    "eTag": "37ecc5400ba0a5fc5eb8f5209a3ca43a",
-    "fields": {
-      "TestC__c": {
-        "__ref": "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__c"
-      },
-      "TestC__r": {
-        "__ref": "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__r"
-      }
-    },
-    "id": "a03RM0000004t2LYAQ",
-    "lastModifiedById": "005RM000001stMBYAY",
-    "lastModifiedDate": "2019-10-24T21:45:31.000Z",
-    "recordTypeId": "012000000000000AAA",
-    "recordTypeInfo": null,
-    "systemModstamp": "2019-10-24T21:45:31.000Z",
-    "weakEtag": 1571953531000
-  }
-};
-
-
-
-treeData = {
-  "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__c": {
-    "displayValue": null,
-    "value": "a02RM00000081S9YAI"
-  },
-  "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__Id": {
-    "displayValue": null,
-    "value": "a02RM00000081S9YAI"
-  },
-  "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__c": {
-    "displayValue": null,
-    "value": "a00RM0000008EhHYAU"
-  },
-  "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Id": {
-    "displayValue": null,
-    "value": "a00RM0000008EhHYAU"
-  },
-  "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__c": {
-    "displayValue": null,
-    "value": "006RM000003JZMkYAO"
-  },
-  "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Id": {
-    "displayValue": null,
-    "value": "001RM000004XMZ5YAO"
-  },
-  "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Name": {
-    "displayValue": null,
-    "value": "foo"
-  },
-  "UiApi::RecordRepresentation:001RM000004XMZ5YAO": {
-    "apiName": "Account",
-    "childRelationships": {},
-    "eTag": "81921ed292cad1b6f9bc8f202857e8cf",
-    "fields": {
-      "Id": {
-        "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Id"
-      },
-      "Name": {
-        "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__Name"
-      },
-      "OperatingHours": {
-        "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__OperatingHours"
-      },
-      "OperatingHoursId": {
-        "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__OperatingHoursId"
-      }
-    },
-    "id": "001RM000004XMZ5YAO",
-    "lastModifiedById": "005RM000001stMBYAY",
-    "lastModifiedDate": "2019-10-24T18:59:40.000Z",
-    "recordTypeId": "012RM000000DBJDYA4",
-    "recordTypeInfo": {
-      "available": true,
-      "defaultRecordTypeMapping": true,
-      "master": false,
-      "name": "y",
-      "recordTypeId": "012RM000000DBJDYA4"
-    },
-    "systemModstamp": "2019-10-24T18:59:41.000Z",
-    "weakEtag": 1571943581000
-  },
-  "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Account": {
-    "displayValue": "foo",
-    "value": {
-      "__ref": "UiApi::RecordRepresentation:001RM000004XMZ5YAO"
-    }
-  },
-  "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__AccountId": {
-    "displayValue": null,
-    "value": "001RM000004XMZ5YAO"
-  },
-  "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Id": {
-    "displayValue": null,
-    "value": "006RM000003JZMkYAO"
-  },
-  "UiApi::RecordRepresentation:006RM000003JZMkYAO": {
-    "apiName": "Opportunity",
-    "childRelationships": {},
-    "eTag": "0fc239e0dcc4ffb2f81e96b28568aa53",
-    "fields": {
-      "Account": {
-        "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Account"
-      },
-      "AccountId": {
-        "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__AccountId"
-      },
-      "Id": {
-        "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO__fields__Id"
-      }
-    },
-    "id": "006RM000003JZMkYAO",
-    "lastModifiedById": null,
-    "lastModifiedDate": null,
-    "recordTypeId": "012RM000000DBJIYA4",
-    "recordTypeInfo": null,
-    "systemModstamp": null,
-    "weakEtag": 0
-  },
-  "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__r": {
-    "displayValue": null,
-    "value": {
-      "__ref": "UiApi::RecordRepresentation:006RM000003JZMkYAO"
-    }
-  },
-  "UiApi::RecordRepresentation:a00RM0000008EhHYAU": {
-    "apiName": "TestA__c",
-    "childRelationships": {},
-    "eTag": "90e408b0a1b6595946d45e753070444a",
-    "fields": {
-      "Id": {
-        "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Id"
-      },
-      "Opportunity__c": {
-        "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__c"
-      },
-      "Opportunity__r": {
-        "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU__fields__Opportunity__r"
-      }
-    },
-    "id": "a00RM0000008EhHYAU",
-    "lastModifiedById": null,
-    "lastModifiedDate": null,
-    "recordTypeId": "012RM000000DBJ3YAO",
-    "recordTypeInfo": null,
-    "systemModstamp": null,
-    "weakEtag": 0
-  },
-  "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__r": {
-    "displayValue": null,
-    "value": {
-      "__ref": "UiApi::RecordRepresentation:a00RM0000008EhHYAU"
-    }
-  },
-  "UiApi::RecordRepresentation:a02RM00000081S9YAI": {
-    "apiName": "TestC__c",
-    "childRelationships": {},
-    "eTag": "612a7b93f6d8d1ca725c6d0b2e05e99f",
-    "fields": {
-      "Id": {
-        "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__Id"
-      },
-      "TestA__c": {
-        "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__c"
-      },
-      "TestA__r": {
-        "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI__fields__TestA__r"
-      }
-    },
-    "id": "a02RM00000081S9YAI",
-    "lastModifiedById": "005RM000001stMBYAY",
-    "lastModifiedDate": "2019-10-24T20:20:31.000Z",
-    "recordTypeId": "012000000000000AAA",
-    "recordTypeInfo": null,
-    "systemModstamp": "2019-10-24T20:20:31.000Z",
-    "weakEtag": 1571948431000
-  },
-  "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__r": {
-    "displayValue": null,
-    "value": {
-      "__ref": "UiApi::RecordRepresentation:a02RM00000081S9YAI"
-    }
-  },
-  "UiApi::RecordRepresentation:a03RM0000004t2LYAQ": {
-    "apiName": "TestD__c",
-    "childRelationships": {},
-    "eTag": "37ecc5400ba0a5fc5eb8f5209a3ca43a",
-    "fields": {
-      "TestC__c": {
-        "__ref": "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__c"
-      },
-      "TestC__r": {
-        "__ref": "UiApi::RecordRepresentation:a03RM0000004t2LYAQ__fields__TestC__r"
-      }
-    },
-    "id": "a03RM0000004t2LYAQ",
-    "lastModifiedById": "005RM000001stMBYAY",
-    "lastModifiedDate": "2019-10-24T21:45:31.000Z",
-    "recordTypeId": "012000000000000AAA",
-    "recordTypeInfo": null,
-    "systemModstamp": "2019-10-24T21:45:31.000Z",
-    "weakEtag": 1571953531000
-  },
-  "UiApi::RecordRepresentation:005RM000001stMBYAY__fields__Id": {
-    "displayValue": null,
-    "value": "005RM000001stMBYAY"
-  },
-  "UiApi::RecordRepresentation:005RM000001stMBYAY__fields__Name": {
-    "displayValue": null,
-    "value": "Admin User"
-  },
-  "UiApi::RecordRepresentation:005RM000001stMBYAY": {
-    "apiName": "User",
-    "childRelationships": {},
-    "eTag": "879d4793412693066cdf5ab780504b65",
-    "fields": {
-      "Id": {
-        "__ref": "UiApi::RecordRepresentation:005RM000001stMBYAY__fields__Id"
-      },
-      "Name": {
-        "__ref": "UiApi::RecordRepresentation:005RM000001stMBYAY__fields__Name"
-      }
-    },
-    "id": "005RM000001stMBYAY",
-    "lastModifiedById": "005RM000001stMBYAY",
-    "lastModifiedDate": "2019-06-04T19:07:01.000Z",
-    "recordTypeId": null,
-    "recordTypeInfo": null,
-    "systemModstamp": "2019-10-24T18:51:38.000Z",
-    "weakEtag": 1571943098000
-  },
-  "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__CreatedBy": {
-    "displayValue": "Admin User",
-    "value": {
-      "__ref": "UiApi::RecordRepresentation:005RM000001stMBYAY"
-    }
-  },
-  "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__CreatedById": {
-    "displayValue": null,
-    "value": "005RM000001stMBYAY"
-  },
-  "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__Id": {
-    "displayValue": null,
-    "value": "0OHRM0000000D014AE"
-  },
-  "UiApi::RecordRepresentation:0OHRM0000000D014AE": {
-    "apiName": "OperatingHours",
-    "childRelationships": {},
-    "eTag": "af2b1944417ae7ee9de4d6bcd06bd800",
-    "fields": {
-      "CreatedBy": {
-        "__ref": "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__CreatedBy"
-      },
-      "CreatedById": {
-        "__ref": "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__CreatedById"
-      },
-      "Id": {
-        "__ref": "UiApi::RecordRepresentation:0OHRM0000000D014AE__fields__Id"
-      }
-    },
-    "id": "0OHRM0000000D014AE",
-    "lastModifiedById": "005RM000001stMBYAY",
-    "lastModifiedDate": "2019-10-24T18:57:03.000Z",
-    "recordTypeId": null,
-    "recordTypeInfo": null,
-    "systemModstamp": "2019-10-24T18:57:03.000Z",
-    "weakEtag": 1571943423000
-  },
-  "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__OperatingHours": {
-    "displayValue": null,
-    "value": {
-      "__ref": "UiApi::RecordRepresentation:0OHRM0000000D014AE"
-    }
-  },
-  "UiApi::RecordRepresentation:001RM000004XMZ5YAO__fields__OperatingHoursId": {
-    "displayValue": null,
-    "value": "0OHRM0000000D014AE"
-  }
-};
-
 function isRecord(key) {
   return key.includes('UiApi::RecordRepresentation') && !key.includes('__fields__');
 }
 
-function createTree(key, recs, tree) {
-  console.log('recs');
-  console.log(recs);
+
+// recursive function that builds Tree JSON object
+function makeTreeJSON(key, recs, tree) {
   let obj = {'name':key};
   if (!(key in recs)) {
     console.log('key not in recs');
     console.log(key);
   }
-  if (!('fields' in recs[key]) && typeof(recs[key]['value'])=='string') { // is a leaf
+  if (!('fields' in recs[key]) && (recs[key]['value'] === null || typeof(recs[key]['value'])!=='object')) { // is a leaf
+    console.log('obj '+key);
+    console.log(obj);
     return obj;
   }
 
@@ -451,35 +20,35 @@ function createTree(key, recs, tree) {
 
   // must be field
   if (!('fields' in recs[key])) {
-    // key_rec = key.substring(0, key.indexOf('__fields__')); // text before __fields__
-    // // console.log('slice');
-    // // console.log(key.slice(-3));
-    // // console.log(key_rec);
-    // isRoot[key_rec] = false;
     // special check for child Record
     let ref = recs[key]['value']['__ref']
-    ref_obj = createTree(ref, recs, tree);
+    ref_obj = makeTreeJSON(ref, recs, tree);
     obj['children'].push(ref_obj);
     return obj;
   }
 
-
-
   let fields = recs[key]['fields'];
   for (field in fields) {
+    // if (field == '__proto__') {
+    //   continue;
+    // }
+
     let ref = fields[field]['__ref'];
-    ref_obj = createTree(ref, recs, tree);
+    console.log('field ref '+field+' '+ref);
+    ref_obj = makeTreeJSON(ref, recs, tree);
+    console.log('ref obj');
+    console.log(ref_obj);
     obj['children'].push(ref_obj);
   }
-
-  // alert(JSON.stringify(recs));
-  // alert('created tree');
-  // alert(JSON.stringify(obj));
-  console.log('key '+key);
+  //
+  // console.log('key '+key);
+  // console.log(obj);
+  console.log('obj '+key);
   console.log(obj);
   return obj;
 }
 
+// format Response JSON to pass into makeTreeJSON
 function formatResponse(response) {
   let parentArray = []; // child - parent relationship
   let recordsArray = []; // keeps track of all Records
@@ -487,18 +56,17 @@ function formatResponse(response) {
   let original_names = {}; // for names that had () replaced
   let isRoot = {};
 
-
   let tree = {};
 
-  if (response) {//.source && response.source.records) {
-    recs = response;// response.source.records;
+  if (response.source && response.source.records) {
+    recs = response.source.records;// response.source.records;
     console.log('recs');
     console.log(recs);
 
     for (key in recs) {
 
       // is a field Record
-      if (key.includes('__fields__') && typeof(recs[key]['value']) == 'object' && ('__ref' in recs[key]['value'])) {
+      if (key.includes('__fields__') && recs[key]['value'] !== null && typeof(recs[key]['value']) == 'object' && ('__ref' in recs[key]['value'])) {
         let ref = recs[key]['value']['__ref']
         if (isRecord(ref)) {
           isRoot[ref] = false;
@@ -563,10 +131,10 @@ function formatResponse(response) {
         recs[root]['fields'][key] = {'__ref':key};
       }
     }
-    console.log('roots');
-    console.log(isRoot);
-    console.log('recs');
-    console.log(recs);
+    // console.log('roots');
+    // console.log(isRoot);
+    // console.log('recs');
+    // console.log(recs);
     return recs;
 
     // tree['name'] = root;
@@ -577,39 +145,11 @@ function formatResponse(response) {
     //   }
     // }
   }
-  //
-  //
-  //
-  // console.log('parentArray');
-  // console.log(parentArray);
-  // // graph structure
-  // let grafo = [];
-  // for (key in parentArray) {
-  //   let newVal = {};
-  //   newVal['id'] = key;
-  //   newVal['parentIds'] = parentArray[key];
-  //   grafo.push(newVal);
-  // }
-  // console.log('records');
-  // console.log(recordsArray);
-  //
-  // // for now, DAG has to be connected
-  // if (recordsArray.length == 1) {
-  //   grafo.push({'id':recordsArray[0], 'parentIds':[]});
-  // } else {
-  //   let root = 'root';
-  //   for (let i = 0; i < recordsArray.length; i++) {
-  //     grafo.push({'id':recordsArray[i], 'parentIds':[root]});
-  //   }
-  //   grafo.push({'id':root, 'parentIds':[]});
-  // }
-  // console.log('grafo');
-  // console.log(grafo);
 }
-newTree = {};
-new_recs = formatResponse(treeData);
-treeData = createTree('root', new_recs, newTree);
-console.log(newTree);
+// newTree = {};
+// new_recs = formatResponse(treeData);
+// treeData = makeTreeJSON('root', new_recs, newTree);
+// console.log(newTree);
 
 //
 // var treeData =
@@ -627,7 +167,41 @@ console.log(newTree);
 //     ]
 //   };
 
-function createCollapsibleTree(treeData) {
+
+function getText(key, recs) {
+  if (key == 'root') {
+    return 'root';
+  }
+  if (!key.includes('__fields__')) { //is Record
+    return recs[key]['apiName'] ?? key;
+  }
+  if (key.slice(-3) == '__r') {
+    return key.substring(key.indexOf('__fields__') + '__fields__'.length, key.length - 3);
+  }
+  return key.substring(key.indexOf('__fields__') + '__fields__'.length);
+}
+
+function getValue(key, recs) {
+  if (key == 'root') {
+    return 'root';
+  }
+  if (!key.includes('__fields__')) { //is Record
+    return key.substring('UiApi::RecordRepresentation:'.length);
+  }
+  if (key.slice(-3) == '__r') {
+    return key.substring('UiApi::RecordRepresentation:'.length, key.length - 3);
+  }
+
+  if (recs[key]['displayValue'] === null) {
+    return recs[key]['value'] ?? key;
+  }
+  return recs[key]['displayValue'];
+}
+
+
+function createCollapsibleTree(treeData, recs) {
+  d3.selectAll("body > *").remove();
+
 // Set the dimensions and margins of the diagram
 var margin = {top: 20, right: 90, bottom: 30, left: 90},
     width = 960 - margin.left - margin.right,
@@ -712,8 +286,32 @@ function update(source) {
       .attr("text-anchor", function(d) {
           return d.children || d._children ? "end" : "start";
       })
-      .text(function(d) { return d.data.name; });
+      .text(function(d) { return getText(d.data.name, recs); });
+    //
+    // var div = d3.select("body").append("div")
+    // .attr("class", "tooltip")
+    // .style("opacity", 0);
+    nodeEnter.on('mouseover', function (d, i) {
+              d3.select(this).transition()
+                   .duration('50')
+                   .attr('opacity', '.7');
+              //
+              //  div.transition()
+              //       .duration(50)
+              //       .style("opacity", 1);
+              // div.html(getValue(d.data.name, recs))
+              //      .style("left", (d3.event.pageX-10) +"px")
+              //      .style("top", (d3.event.pageY+10) + "px");
 
+                  })
+         .on('mouseout', function (d, i) {
+              d3.select(this).transition()
+                   .duration('50')
+                   .attr('opacity', '1');
+               // div.transition()
+               //      .duration('50')
+               //      .style("opacity", 0);
+                   });
   // UPDATE
   var nodeUpdate = nodeEnter.merge(node);
 
@@ -810,4 +408,45 @@ function update(source) {
   }
 }
 }
-createCollapsibleTree(treeData);
+// createCollapsibleTree(treeData);
+
+
+
+
+
+// stores tabId that opened this devtools window
+let tabId = null;
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  console.log('got message');
+  if (request.tabId == tabId && request.action == 'giveSource') {
+    console.log('giveSource');
+    console.log(tabId);
+    console.log(JSON.stringify(request));
+    newTree = {};
+    new_recs = formatResponse(request);
+    console.log('new recs');
+    console.log(new_recs);
+    treeData = makeTreeJSON('root', new_recs, newTree);
+    console.log(treeData);
+    createCollapsibleTree(treeData, new_recs);
+  }
+
+});
+
+//
+chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
+  // format response to be put in sugiyama-DAG
+  alert('getSource devtools');
+  alert(response.tabId);
+  tabId = response.tabId;
+  newTree = {};
+  new_recs = formatResponse(response);
+  console.log('new recs');
+  console.log(new_recs);
+  treeData = makeTreeJSON('root', new_recs, newTree);
+  console.log(treeData);
+  createCollapsibleTree(treeData, new_recs);
+
+
+});

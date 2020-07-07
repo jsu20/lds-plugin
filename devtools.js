@@ -1,6 +1,7 @@
 chrome.devtools.panels.create("LDS Cache Visualization",
     null,
-    "panel.html",
+    //"hope_tree.html",
+    "index.html",
     function(panel) {
       // code invoked on panel creation
     }
