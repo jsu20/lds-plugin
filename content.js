@@ -21,13 +21,13 @@ window.addEventListener("message", function (event) {
       source = event.data.source;
       // alert(JSON.stringify(event.data));
       // alert('cache content');
-      args = event.data.keys;
+      args = event.data.keys; // 
       // alert(JSON.stringify(args));
-      console.log('args');
-      console.log(args);
-      method = event.data.method;
+      alert('args');
+      alert(JSON.stringify(args));
+      method = event.data.method; // storeIngest or storeEvict
       // alert(method);
-      chrome.runtime.sendMessage({action: 'putSource', source: source});
+      chrome.runtime.sendMessage({action: 'putSource', source: source, method: method, args: args});
     }
   }
 });

@@ -169,9 +169,11 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         alert(JSON.stringify(sender));
         alert(sender.id);
         source = request.source;
+        // method = request.method;
+        // args = request.args;
         alert(JSON.stringify(source));
         // sendResponse({ source: source });
-        chrome.runtime.sendMessage({action:'giveSource', source:source, tabId:tabId});
+        // chrome.runtime.sendMessage({action:'giveSource', source:source, tabId:tabId, method:method, args:args});
         // create new tab
         // chrome.tabs.create({ url: 'newTab.html' });
         // alert('in background');
@@ -180,7 +182,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.action === 'putSource') {
         alert('putSource');
         source = request.source;
-        chrome.runtime.sendMessage({action:'giveSource', source:source, tabId:tabId});
+        let method = request.method;
+        let args = request.args;
+        chrome.runtime.sendMessage({action:'giveSource', source:source, tabId:tabId, method:method, args:args});
         // create new tab
         // chrome.tabs.create({ url: 'newTab.html' });
         // alert('in background');

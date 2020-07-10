@@ -1077,230 +1077,230 @@ var jdd = {
 };
 
 
-function isRecord(key) {
-  return key.includes('UiApi::RecordRepresentation') && !key.includes('__fields__');
-}
+// function isRecord(key) {
+//   return key.includes('UiApi::RecordRepresentation') && !key.includes('__fields__');
+// }
 
 
-// recursive function that builds Tree JSON object
-function makeTreeJSON(key, recs) {
-  let obj = {'name':key};
-  if (!(key in recs)) {
-    console.log('key not in recs');
-    console.log(key);
-  }
-  if (!('fields' in recs[key]) && (recs[key]['value'] === null || typeof(recs[key]['value'])!=='object')) { // is a leaf
-    console.log('obj '+key);
-    console.log(obj);
-    return obj;
-  }
+// // recursive function that builds Tree JSON object
+// function makeTreeJSON(key, recs) {
+//   let obj = {'name':key};
+//   if (!(key in recs)) {
+//     console.log('key not in recs');
+//     console.log(key);
+//   }
+//   if (!('fields' in recs[key]) && (recs[key]['value'] === null || typeof(recs[key]['value'])!=='object')) { // is a leaf
+//     console.log('obj '+key);
+//     console.log(obj);
+//     return obj;
+//   }
 
-  obj['children'] = [];
+//   obj['children'] = [];
 
-  // must be field
-  if (!('fields' in recs[key])) {
-    // special check for child Record
-    let ref = recs[key]['value']['__ref']
-    let ref_obj = makeTreeJSON(ref, recs);
-    obj['children'].push(ref_obj);
-    return obj;
-  }
+//   // must be field
+//   if (!('fields' in recs[key])) {
+//     // special check for child Record
+//     let ref = recs[key]['value']['__ref']
+//     let ref_obj = makeTreeJSON(ref, recs);
+//     obj['children'].push(ref_obj);
+//     return obj;
+//   }
 
-  let fields = recs[key]['fields'];
-  for (let field in fields) {
-    // if (field == '__proto__') {
-    //   continue;
-    // }
+//   let fields = recs[key]['fields'];
+//   for (let field in fields) {
+//     // if (field == '__proto__') {
+//     //   continue;
+//     // }
 
-    let ref = fields[field]['__ref'];
-    console.log('field ref '+field+' '+ref);
-    let ref_obj = makeTreeJSON(ref, recs);
-    console.log('ref obj');
-    console.log(ref_obj);
-    obj['children'].push(ref_obj);
-  }
-  //
-  // console.log('key '+key);
-  // console.log(obj);
-  console.log('obj '+key);
-  console.log(obj);
-  return obj;
-}
+//     let ref = fields[field]['__ref'];
+//     console.log('field ref '+field+' '+ref);
+//     let ref_obj = makeTreeJSON(ref, recs);
+//     console.log('ref obj');
+//     console.log(ref_obj);
+//     obj['children'].push(ref_obj);
+//   }
+//   //
+//   // console.log('key '+key);
+//   // console.log(obj);
+//   console.log('obj '+key);
+//   console.log(obj);
+//   return obj;
+// }
 
-// format Response JSON to pass into makeTreeJSON
-function formatResponse(response) {
-  let parentArray = []; // child - parent relationship
-  let recordsArray = []; // keeps track of all Records
-  let recs;
-  let original_names = {}; // for names that had () replaced
-  let isRoot = {};
+// // format Response JSON to pass into makeTreeJSON
+// function formatResponse(response) {
+//   let parentArray = []; // child - parent relationship
+//   let recordsArray = []; // keeps track of all Records
+//   let recs;
+//   let original_names = {}; // for names that had () replaced
+//   let isRoot = {};
 
-  let tree = {};
+//   let tree = {};
 
-  if (response.source && response.source.records) {
-    recs = response.source.records;
-    console.log('recs');
-    console.log(recs);
+//   if (response.source && response.source.records) {
+//     recs = response.source.records;
+//     console.log('recs');
+//     console.log(recs);
 
-    for (let key in recs) {
+//     for (let key in recs) {
 
-      // is a field Record
-      if (key.includes('__fields__') && recs[key]['value'] !== null && typeof(recs[key]['value']) == 'object' && ('__ref' in recs[key]['value'])) {
-        let ref = recs[key]['value']['__ref']
-        if (isRecord(ref)) {
-          isRoot[ref] = false;
-        }
-      }
-      else if (isRecord(key)) {
-        // insert into recordsArray
-        // if (!(key in recordsArray)) {
-        //   recordsArray.push(key);
-        // }
-        if (!(key in isRoot)) {
-          isRoot[key] = true;
-          console.log('true key');
-          console.log(key);
-        }
-        // get all fields
-        if (recs[key]['fields']) {
-          let fields = recs[key]['fields'];
-          for (let field in fields) {
-            let ref = fields[field]['__ref'];
-            if (isRecord(ref)) {
-              isRoot[ref] = false;
-            }
-            // let ref = fields[field]['__ref']; // assuming is a __fields__?
-            // // () can't exist, replace them
-            // // if (ref.includes('(') || ref.includes(')')) {
-            // //   let orig = ref;
-            // //   ref = ref.replace('(', '_');
-            // //   ref = ref.replace(')', '_');
-            // //   original_names[ref] = orig;
-            // // }
-            // // add ref + parent to parent array
-            // if (ref in parentArray) {
-            //   parentArray[ref].push(key);
-            // } else {
-            //   parentArray[ref] = [key];
-            // }
-          }
-        }
-      }
-    }
+//       // is a field Record
+//       if (key.includes('__fields__') && recs[key]['value'] !== null && typeof(recs[key]['value']) == 'object' && ('__ref' in recs[key]['value'])) {
+//         let ref = recs[key]['value']['__ref']
+//         if (isRecord(ref)) {
+//           isRoot[ref] = false;
+//         }
+//       }
+//       else if (isRecord(key)) {
+//         // insert into recordsArray
+//         // if (!(key in recordsArray)) {
+//         //   recordsArray.push(key);
+//         // }
+//         if (!(key in isRoot)) {
+//           isRoot[key] = true;
+//           console.log('true key');
+//           console.log(key);
+//         }
+//         // get all fields
+//         if (recs[key]['fields']) {
+//           let fields = recs[key]['fields'];
+//           for (let field in fields) {
+//             let ref = fields[field]['__ref'];
+//             if (isRecord(ref)) {
+//               isRoot[ref] = false;
+//             }
+//             // let ref = fields[field]['__ref']; // assuming is a __fields__?
+//             // // () can't exist, replace them
+//             // // if (ref.includes('(') || ref.includes(')')) {
+//             // //   let orig = ref;
+//             // //   ref = ref.replace('(', '_');
+//             // //   ref = ref.replace(')', '_');
+//             // //   original_names[ref] = orig;
+//             // // }
+//             // // add ref + parent to parent array
+//             // if (ref in parentArray) {
+//             //   parentArray[ref].push(key);
+//             // } else {
+//             //   parentArray[ref] = [key];
+//             // }
+//           }
+//         }
+//       }
+//     }
 
-    // get root and root children
-    let root = 'root';
+//     // get root and root children
+//     let root = 'root';
 
-    recs[root] = {"apiName": "root","fields":{}};
-    for (let key in isRoot) {
-      if (isRoot[key]) {
-        recs[root]['fields'][key] = {'__ref':key};
-      }
-    }
-    // console.log('roots');
-    // console.log(isRoot);
-    // console.log('recs');
-    // console.log(recs);
-    return recs;
+//     recs[root] = {"apiName": "root","fields":{}};
+//     for (let key in isRoot) {
+//       if (isRoot[key]) {
+//         recs[root]['fields'][key] = {'__ref':key};
+//       }
+//     }
+//     // console.log('roots');
+//     // console.log(isRoot);
+//     // console.log('recs');
+//     // console.log(recs);
+//     return recs;
 
-    // tree['name'] = root;
-    // tree['children'] = [];
-    // for (key in isRoot) {
-    //   if (isRoot[key]) {
-    //     tree['children'].push(key);
-    //   }
-    // }
-  }
-}
-// stores tabId that opened this devtools window
-let tabId = null;
-let prevData = null;
-let currData = null;
-let allData = []
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  console.log('got message');
-  if (request.tabId == tabId && request.action == 'giveSource') {
-    alert('giveSource');
-    console.log(tabId);
-    console.log(JSON.stringify(request));
-    let new_recs = formatResponse(request);
-    console.log('new recs');
-    console.log(new_recs);
-    let treeData = makeTreeJSON('root', new_recs);
-    console.log(treeData);
-    allData.push(treeData);
-    prevData = currData;
-    currData = treeData;
-    // generateTree(treeData, new_recs);
-    generateJSON(prevData, currData);
-  }
+//     // tree['name'] = root;
+//     // tree['children'] = [];
+//     // for (key in isRoot) {
+//     //   if (isRoot[key]) {
+//     //     tree['children'].push(key);
+//     //   }
+//     // }
+//   }
+// }
+// // stores tabId that opened this devtools window
+// let tabId = null;
+// let prevData = null;
+// let currData = null;
+// let allData = []
+// chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+//   console.log('got message');
+//   if (request.tabId == tabId && request.action == 'giveSource') {
+//     alert('giveSource');
+//     console.log(tabId);
+//     console.log(JSON.stringify(request));
+//     let new_recs = formatResponse(request);
+//     console.log('new recs');
+//     console.log(new_recs);
+//     let treeData = makeTreeJSON('root', new_recs);
+//     console.log(treeData);
+//     allData.push(treeData);
+//     prevData = currData;
+//     currData = treeData;
+//     // generateTree(treeData, new_recs);
+//     generateJSON(prevData, currData);
+//   }
 
-});
-
-//
-chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
-  // format response to be put in sugiyama-DAG
-  alert('getSource devtools');
-  alert(response.tabId);
-  console.log(response);
-  tabId = response.tabId;
-  let new_recs = formatResponse(response);
-  console.log('new recs');
-  console.log(new_recs);
-  let treeData = makeTreeJSON('root', new_recs);
-  console.log(treeData);
-  currData = treeData;
-  allData.push(treeData);
-  // generateTree(treeData, new_recs);
-
-
-});
-
-function generateJSON(data, data2) {
-alert('data');
-alert(JSON.stringify(data));
-alert(JSON.stringify(data2));
-console.log('data');
-console.log(data);
-console.log(data2);
-
-jdd.compare(data, data2);
-// $('#compare').click(function () {
-//     jdd.compare();
 // });
-// let data = '{"Aidan Gillen": {"array": ["Game of Thrones","The Wire"],"string": "some string","int": "2","otherint": 4, "aboolean": "true", "boolean": false,"object": {"foo": "bar"}},"Amy Ryan": ["In Treatment","The Wire"],"Annie Fitzgerald": ["True Blood","Big Love","The Sopranos","Oz"],"Anwan Glover": ["Treme","The Wire"],"Alexander Skarsg?rd": ["Generation Kill","True Blood"],"Alice Farmer": ["The Corner","Oz","The Wire"]}';
-// if (jdd.getParameterByName('left')) {
-//     $('#textarealeft').val(data);//jdd.getParameterByName('left'));
-// }
-//
-// if (jdd.getParameterByName('right')) {
-//     $('#textarearight').val(data);//jdd.getParameterByName('right'));
-// }
-//
-// if (jdd.getParameterByName('left') && jdd.getParameterByName('right')) {
-//     jdd.compare();
-// }
+
+// //
+// chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
+//   // format response to be put in sugiyama-DAG
+//   alert('getSource devtools');
+//   alert(response.tabId);
+//   console.log(response);
+//   tabId = response.tabId;
+//   let new_recs = formatResponse(response);
+//   console.log('new recs');
+//   console.log(new_recs);
+//   let treeData = makeTreeJSON('root', new_recs);
+//   console.log(treeData);
+//   currData = treeData;
+//   allData.push(treeData);
+//   // generateTree(treeData, new_recs);
 
 
-$('#sample').click(function (e) {
-    e.preventDefault();
-    jdd.loadSampleData();
-});
+// });
 
-$(document).keydown(function (event) {
-    if (event.keyCode === 78 || event.keyCode === 39) {
-        /*
-         * The N key or right arrow key
-         */
-        jdd.highlightNextDiff();
-    } else if (event.keyCode === 80 || event.keyCode === 37) {
-        /*
-         * The P key or left arrow key
-         */
-        jdd.highlightPrevDiff();
-    }
-});
-}
+// function generateJSON(data, data2) {
+// alert('data');
+// alert(JSON.stringify(data));
+// alert(JSON.stringify(data2));
+// console.log('data');
+// console.log(data);
+// console.log(data2);
+
+// jdd.compare(data, data2);
+// // $('#compare').click(function () {
+// //     jdd.compare();
+// // });
+// // let data = '{"Aidan Gillen": {"array": ["Game of Thrones","The Wire"],"string": "some string","int": "2","otherint": 4, "aboolean": "true", "boolean": false,"object": {"foo": "bar"}},"Amy Ryan": ["In Treatment","The Wire"],"Annie Fitzgerald": ["True Blood","Big Love","The Sopranos","Oz"],"Anwan Glover": ["Treme","The Wire"],"Alexander Skarsg?rd": ["Generation Kill","True Blood"],"Alice Farmer": ["The Corner","Oz","The Wire"]}';
+// // if (jdd.getParameterByName('left')) {
+// //     $('#textarealeft').val(data);//jdd.getParameterByName('left'));
+// // }
+// //
+// // if (jdd.getParameterByName('right')) {
+// //     $('#textarearight').val(data);//jdd.getParameterByName('right'));
+// // }
+// //
+// // if (jdd.getParameterByName('left') && jdd.getParameterByName('right')) {
+// //     jdd.compare();
+// // }
+
+
+// $('#sample').click(function (e) {
+//     e.preventDefault();
+//     jdd.loadSampleData();
+// });
+
+// $(document).keydown(function (event) {
+//     if (event.keyCode === 78 || event.keyCode === 39) {
+//         /*
+//          * The N key or right arrow key
+//          */
+//         jdd.highlightNextDiff();
+//     } else if (event.keyCode === 80 || event.keyCode === 37) {
+//         /*
+//          * The P key or left arrow key
+//          */
+//         jdd.highlightPrevDiff();
+//     }
+// });
+// }
 // jQuery(document).ready(function () {
 //     jdd.compare();
 //     // $('#compare').click(function () {
