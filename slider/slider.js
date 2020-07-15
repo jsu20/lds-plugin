@@ -1,3 +1,46 @@
+function store_display(val, method_history) {
+    let start = val[0];
+    let end = val[1];
+    let freq_cnts = {};
+    freq_cnts['storeIngest'] = 0;
+    freq_cnts['storeEvict'] = 0;
+    freq_cnts['storeBroadcast'] = 0;
+
+    for (let i = start+1; i <= end; i++) {
+        freq_cnts[method_history[i]] += 1;
+    }
+    let prev = false;
+    let displayText = "";
+    console.log('freq');
+    console.log(freq_cnts);
+    methods = ['storeIngest', 'storeEvict', 'storeBroadcast'];
+    for (let i in methods) {
+        
+        if (freq_cnts[methods[i]] > 0) {
+            if (prev) {
+                displayText += ", "
+            }
+            displayText += methods[i] + ": " + freq_cnts[methods[i]];
+            prev = true;
+        }
+
+    }
+
+    d3.select('p#store').text(
+        displayText
+    );
+}
+
+function store_request(val, ingest_data) {
+    let req1 = ingest_data[val[0]][0];
+    let req2 = ingest_data[val[1]][0];
+    req1 = (req1 == '') ? 'Aura call' : req1;
+    req2 = (req2 == '') ? 'Aura call' : req2;
+    
+    d3.select('p#request1').text(req1);
+    d3.select('p#request2').text(req2);
+}
+
 var slider = {
     stepSlider: function(step_data, string_data, graph_data, ingest_data, format_function) {
 // step_data = [0, 1, 2, 3, 4, 5, 6];
@@ -36,7 +79,7 @@ var slider = {
 // console.log(graph_data[sliderStep.value()])
 // d3.select('p#value-step').text(JSON.stringify(graph_data[sliderStep.value()])); 
     },
-    rangeSlider: function(step_data, string_data, graph_data, ingest_data, format_function) {
+    rangeSlider: function(step_data, string_data, graph_data, ingest_data, method_history, format_function) {
         // step_data = [0, 1, 2, 3, 4, 5, 6];
         // string_data = ['a','b','c','d','e','f','g'];
         // Step
@@ -102,6 +145,9 @@ var slider = {
             .fill('#2196f3')
             .on('onchange', val => {
                 format_function(graph_data[val[0]], graph_data[val[1]]);
+                store_display(val, method_history);
+                store_request(val, ingest_data)
+
                 d3.select('p#value-range').text(val.join('-'));
             });
         
@@ -122,6 +168,9 @@ var slider = {
             .value()
             .join('-')
         );
+        store_display(sliderRange.value(), method_history);
+        store_request(sliderRange.value(), ingest_data)
+        
         // graph_data = [1, 2, 3];
         // console.log(sliderStep.value());
         // console.log(graph_data[sliderStep.value()])

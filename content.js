@@ -29,5 +29,9 @@ window.addEventListener("message", function (event) {
       // alert(method);
       chrome.runtime.sendMessage({action: 'putSource', source: source, method: method, args: args});
     }
+
+    if (event.data.type == 'ADAPTER_CALL') {
+      chrome.runtime.sendMessage({action: 'adapterCall', config: event.data.config, name: event.data.name});
+    }
   }
 });

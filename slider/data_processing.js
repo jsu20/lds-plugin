@@ -154,7 +154,7 @@ function isRecord(key) {
         ingested = request.args; // key, request, response. key+request empty if Aura.
         ingest_data.push(ingested);
         
-        slider.rangeSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
+        slider.rangeSlider(step_data, string_data, graph_data, ingest_data, method_history, generateJSON);
         // slider.stepSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
         // console.log(step_data);
         // console.log(string_data);
@@ -166,7 +166,6 @@ function isRecord(key) {
   
   //
 chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
-    // format response to be put in sugiyama-DAG
     alert('getSource devtools');
     alert(response.tabId);
     console.log(response);
@@ -182,15 +181,16 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
 
     var date = new Date();
     var hours = date.getHours();
-    // var days = date.getDay(); 
     var minutes = date.getMinutes();
     var seconds = date.getSeconds();
 
     string_data.push(hours + ":" + minutes + ":" + seconds);
     // generateTree(treeData, new_recs);
-    ingest_data.push('');
+    ingest_data.push(['initialCall']);
 
-    slider.rangeSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
+    method_history.push(response.method);
+
+    slider.rangeSlider(step_data, string_data, graph_data, ingest_data, method_history, generateJSON);
     // slider.stepSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
 });
   

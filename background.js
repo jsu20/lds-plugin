@@ -196,4 +196,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         alert(JSON.stringify(source));
         sendResponse({ source: source, tabId:tabId });
     }
+
+    if (request.action === 'adapterCall') {
+        alert('adapterCall');
+        alert(request.name);
+        alert(JSON.stringify(request.config));
+    }
 });
