@@ -146,11 +146,12 @@ function isRecord(key) {
         // generateJSON(prevData, currData);
         ingested = request.args; // key, request, response. key+request empty if Aura.
         ingest_data.push(ingested);
-
-        slider.stepSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
-        console.log(step_data);
-        console.log(string_data);
-        console.log(graph_data);
+        
+        slider.rangeSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
+        // slider.stepSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
+        // console.log(step_data);
+        // console.log(string_data);
+        // console.log(graph_data);
       }
     } 
   
@@ -175,8 +176,8 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
     // generateTree(treeData, new_recs);
     ingest_data.push('');
 
-
-    slider.stepSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
+    slider.rangeSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
+    // slider.stepSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
 });
   
 function generateJSON(data, data2) {
