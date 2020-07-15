@@ -844,11 +844,11 @@ var jdd = {
 
         report.text('');
 
-        var newDiff = $('<button>Perform a new diff</button>');
-        report.append(newDiff);
-        newDiff.click(function () {
-            jdd.setupNewDiff();
-        });
+        // var newDiff = $('<button>Perform a new diff</button>');
+        // report.append(newDiff);
+        // newDiff.click(function () {
+        //     jdd.setupNewDiff();
+        // });
 
         if (jdd.diffs.length === 0) {
             report.append('<span>The two files were semantically  identical.</span>');

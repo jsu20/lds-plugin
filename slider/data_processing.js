@@ -139,7 +139,14 @@ function isRecord(key) {
 
         graph_data.push(treeData);
         step_data.push(step_data[step_data.length-1]+1);
-        string_data.push('b');
+        
+        var date = new Date();
+        var hours = date.getHours();
+        // var days = date.getDay(); 
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+
+        string_data.push(hours + ":" + minutes + ":" + seconds);
         prevData = currData;
         currData = treeData;
         // generateTree(treeData, new_recs);
@@ -172,7 +179,14 @@ chrome.runtime.sendMessage({action: 'getSource'}, function(response) {
     currData = treeData;
     step_data.push(0);
     graph_data.push(treeData);
-    string_data.push('a');
+
+    var date = new Date();
+    var hours = date.getHours();
+    // var days = date.getDay(); 
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+
+    string_data.push(hours + ":" + minutes + ":" + seconds);
     // generateTree(treeData, new_recs);
     ingest_data.push('');
 

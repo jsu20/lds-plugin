@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>JSON Diff - The semantic JSON compare tool</title>
+        <title>LDS Cache Visualization</title>
 
         <!-- <link rel="stylesheet" href="reset.css" type="text/css" media="screen">
         <link rel="stylesheet" href="throbber.css" type="text/css" media="screen"> -->
@@ -40,23 +40,28 @@
 
         <div id="main">
             <div class="header">
-                <h1>JSON Diff</h1>
-                <h3>The semantic JSON compare tool</h3>
+                <h1>LDS Cache Visualization</h1>
 
                 <div class="weak">
                     <p>
                         Validate, format, and compare two JSON documents.  See the differences between the objects instead of just the new lines and mixed up properties.
                     </p>
 
-                    <p>
-                        Created by <a href="http://www.zackgrossbart.com">Zack Grossbart</a>.  Get the <a href="https://github.com/zgrossbart/jdd">source code</a>.
-                    </p>
-
-                    <p>
-                        Big thanks owed to the team behind <a href="http://www.jsonlint.com">JSONLint</a>.
-                    </p>
-
                 </div>
+            </div>
+
+
+            <div class="container">
+                <h2>Range</h2>
+                <div class="row align-items-center">
+                    <div class="col-sm-2"><p id="value-range"></p></div>
+                    <div class="col-sm"><div id="slider-range"><svg id="slider"></svg></div></div>
+                </div>            
+                <!-- <h2>Step</h2>
+                <div class="row align-items-center">
+                <div class="col-sm-2"><p id="value-step"></p></div>
+                <div class="col-sm"><div id="slider-step"><svg id="slider"></svg></div></div>
+                </div> -->
             </div>
 
             <div class="initContainer">
@@ -90,20 +95,6 @@
             </div>
         </div>
 
-
-
-        <div class="container">
-            <h2>Range</h2>
-            <div class="row align-items-center">
-                <div class="col-sm-2"><p id="value-range"></p></div>
-                <div class="col-sm"><div id="slider-range"></div></div>
-            </div>            
-            <!-- <h2>Step</h2>
-            <div class="row align-items-center">
-              <div class="col-sm-2"><p id="value-step"></p></div>
-              <div class="col-sm"><div id="slider-step"><svg id="slider"></svg></div></div>
-            </div> -->
-        </div>
       
     <script src="slider.js"></script>
     <script src='data_processing.js'></script>
