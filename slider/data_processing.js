@@ -124,30 +124,35 @@ function isRecord(key) {
   let string_data = [];
   let ingest_data = [];
   let graph_data = [];
+  let method_history = [];
 
   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     console.log('got message');
+    
     if (request.tabId == tabId && request.action == 'giveSource') {
       alert('giveSource');
- 
-      let new_recs = formatResponse(request);
-      let treeData = makeTreeJSON('root', new_recs);
+      method_history.push(request.method);
+      alert(request.method);
+      if (request.method != 'storeBroadcast') {
+        let new_recs = formatResponse(request);
+        let treeData = makeTreeJSON('root', new_recs);
 
-      graph_data.push(treeData);
-      step_data.push(step_data[step_data.length-1]+1);
-      string_data.push('b');
-      prevData = currData;
-      currData = treeData;
-      // generateTree(treeData, new_recs);
-      // generateJSON(prevData, currData);
-      ingested = request.args; // key, request, response. key+request empty if Aura.
-      ingest_data.push(ingested);
+        graph_data.push(treeData);
+        step_data.push(step_data[step_data.length-1]+1);
+        string_data.push('b');
+        prevData = currData;
+        currData = treeData;
+        // generateTree(treeData, new_recs);
+        // generateJSON(prevData, currData);
+        ingested = request.args; // key, request, response. key+request empty if Aura.
+        ingest_data.push(ingested);
 
-      slider.stepSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
-      console.log(step_data);
-      console.log(string_data);
-      console.log(graph_data);
-    }
+        slider.stepSlider(step_data, string_data, graph_data, ingest_data, generateJSON);
+        console.log(step_data);
+        console.log(string_data);
+        console.log(graph_data);
+      }
+    } 
   
   });
   
