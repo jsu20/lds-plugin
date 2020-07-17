@@ -117,9 +117,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     console.log('got message');
 
     if (request.tabId == tabId && request.action == 'giveSource') {
-        alert('giveSource');
+        // alert('giveSource');
         method_history.push(request.method);
-        alert(request.method);
+        // alert(request.method);
         if (request.method != 'storeBroadcast') {
             let new_recs = formatResponse(request);
             let treeData = makeTreeJSON('root', new_recs);
@@ -153,8 +153,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
 //
 chrome.runtime.sendMessage({ action: 'getSource' }, function (response) {
-    alert('getSource devtools');
-    alert(response.tabId);
+    // alert('getSource devtools');
+    // alert(response.tabId);
     console.log(response);
     tabId = response.tabId;
     let new_recs = formatResponse(response);
@@ -184,9 +184,9 @@ chrome.runtime.sendMessage({ action: 'getSource' }, function (response) {
 function generateJSON(data, data2) {
     // alert(JSON.stringify(data));
     // alert(JSON.stringify(data2));
-    console.log('data');
-    console.log(data);
-    console.log(data2);
+    // console.log('data');
+    // console.log(data);
+    // console.log(data2);
 
     jdd.compare(data, data2);
 

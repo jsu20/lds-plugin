@@ -17,12 +17,12 @@ window.addEventListener("message", function (event) {
         // checks if is proper request
         if (event.data.type == "CACHE_CONTENTS") {
             // get source
-            alert('getting cache');
+            alert('getting cache contents');
             source = event.data.source;
             // alert(JSON.stringify(event.data));
             // alert('cache content');
             args = event.data.args; // 
-            alert(JSON.stringify(args));
+            // alert(JSON.stringify(args));
             method = event.data.method; // storeIngest or storeEvict
             // alert(method);
             chrome.runtime.sendMessage({ action: 'putSource', source: source, method: method, args: args });

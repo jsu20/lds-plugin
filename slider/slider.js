@@ -32,22 +32,25 @@ function store_display(val, method_history) {
 }
 
 function store_request(val, ingest_data) {
-    let req1 = (ingest_data[val[0]])[1];
-    let req2 = (ingest_data[val[1]])[1];
-    if (Object.keys(req1).length == 0) {
-        req1 = 'Aura call';
+    let key1 = (ingest_data[val[0]])[0];
+    let key2 = (ingest_data[val[1]])[0];
+
+    if (key1 == '') {
+        key1 = 'Aura call';
     } else {
-        req1 = req1.baseUri + req1.basePath;
+        let req1 = (ingest_data[val[0]])[1];
+        key1 = key1 + ', ' + req1.baseUri + req1.basePath;
     }
 
-    if (Object.keys(req2).length == 0) {
-        req2 = 'Aura call';
+    if (key2 == '') {
+        key2 = 'Aura call';
     } else {
-        req2 = req2.baseUri + req2.basePath;
+        let req2 = (ingest_data[val[0]])[1];
+        key2 = key2 + ', ' + req2.baseUri + req2.basePath;
     }
     
-    d3.select('p#request1').text(req1);
-    d3.select('p#request2').text(req2);
+    d3.select('p#request1').text('Left: ' + key1);
+    d3.select('p#request2').text('Right: ' + key2);
 }
 
 var slider = {

@@ -17,8 +17,7 @@ chrome.runtime.onConnect.addListener(function (port) {
     // }
     var devToolsListener = function(message, sender, sendResponse) {
         // Inject a content script into the identified tab
-        alert('bkg');
-        alert(message.tabId);
+        // alert(message.tabId);
         tabId = message.tabId;
         chrome.tabs.executeScript(message.tabId,
             { file: message.scriptToInject });
@@ -43,7 +42,6 @@ let source = null; // will be set after putSource is executed
 //
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.action === 'initialPutSource') {
-        alert('initialPutSource');
         // alert(JSON.stringify(sender));
         // alert(sender.id);
         source = request.source;
@@ -51,7 +49,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
     // sent from DevTools, intended for saving source
     if (request.action === 'putSource') {
-        alert('putSource');
+        // alert('putSource');
         source = request.source;
         let method = request.method;
         let args = request.args;
@@ -60,8 +58,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     // sent from new tab, to get the source
     if(request.action === 'getSource') {
         // sending source
-        alert('background getSource');
-        alert(JSON.stringify(source));
+        // alert('background getSource');
+        // alert(JSON.stringify(source));
         sendResponse({ source: source, tabId:tabId });
     }
 

@@ -43,9 +43,9 @@
                 <h1>LDS Cache Visualization</h1>
 
                 <div class="weak">
-                    <p>
+                    <!-- <p>
                         Validate, format, and compare two JSON documents.  See the differences between the objects instead of just the new lines and mixed up properties.
-                    </p>
+                    </p> -->
 
                 </div>
             </div>
@@ -57,10 +57,8 @@
                     <div class="col-sm-2"><p id="value-range"></p></div>
                     <div class="col-sm"><div id="slider-range"><svg id="slider"></svg></div></div>
                 </div>   
-                <div class="row align-items-center">
-                    <div class="col-sm-2"><p id="request1"></p></div>
-                    <div class="col-sm"><p id="request2"></p></div>
-                </div> 
+                <p id="request1"></p>
+                <p id="request2"></p>
                 <p id="store"></p>         
                 <!-- <h2>Step</h2>
                 <div class="row align-items-center">
@@ -71,23 +69,21 @@
 
             <div class="initContainer">
                 <div class="left">
-                    <textarea spellcheck="false" id="textarealeft" placeholder="Enter JSON to compare, enter an URL to JSON" tabindex="1"></textarea>
+                    <textarea spellcheck="false" id="textarealeft" tabindex="1"></textarea>
                     <pre id="errorLeft" class="error"></pre>
-                    <span class="fileInput">or <input type="file" id="fileLeft" onchange="jdd.handleFiles(this.files, 'left')" tabindex="4"></span>
                 </div>
 
                 <div class="center">
-                    <button id="compare" tabindex="3">Compare</button>
+                    <!-- <button id="compare" tabindex="3">Compare</button> -->
                     <div class="throbber-loader"></div>
-                    <br/><br/>
-                    or try some<br /><a href="#" id="sample">sample data</a>
+                    <!-- <br/><br/>
+                    or try some<br /><a href="#" id="sample">sample data</a> -->
 
                 </div>
 
                 <div class="right">
-                    <textarea spellcheck="false" class="right" id="textarearight" placeholder="Enter JSON to compare, enter an URL to JSON" tabindex="2"></textarea>
+                    <textarea spellcheck="false" class="right" id="textarearight" tabindex="2"></textarea>
                     <pre id="errorRight" class="error"></pre>
-                    <span class="fileInput">or <input type="file" id="fileRight" onchange="jdd.handleFiles(this.files, 'right')" tabindex="5"></span>
                 </div>
             </div>
 
