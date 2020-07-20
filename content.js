@@ -6,12 +6,15 @@ window.addEventListener("message", function (event) {
     if (event.source !== window && event.source !== window.frames[0])
         return;
     alert('asdf');
+    console.log('event');
+    console.log(event);
+    alert(JSON.stringify(event));
     if (event.data.type) {
         if (event.data.type == "INITIAL_CACHE_CONTENTS") {
             // get source
             let source = event.data.source;
             // alert(JSON.stringify(event.data));
-            // alert('initial cache content');
+            alert('initial cache content');
             chrome.runtime.sendMessage({ 
                 action: 'initialPutSource', 
                 source: source,
@@ -25,7 +28,7 @@ window.addEventListener("message", function (event) {
             // alert('getting cache contents');
             let source = event.data.source;
             // alert(JSON.stringify(event.data));
-            // alert('cache content');
+            alert('cache content');
             let args = event.data.args; // 
             // alert(JSON.stringify(args));
             let method = event.data.method; // storeIngest or storeEvict
@@ -41,6 +44,7 @@ window.addEventListener("message", function (event) {
         }
 
         if (event.data.type == 'ADAPTER_CALL') {
+            alert('ADApter');
             chrome.runtime.sendMessage({ 
                 action: 'adapterCall', 
                 config: event.data.config, 
@@ -53,6 +57,7 @@ window.addEventListener("message", function (event) {
         }
 
         if (event.data.type == 'BROADCAST') {
+            alert('broadcast');
             chrome.runtime.sendMessage({ 
                 action: 'broadcast',
                 startTime: event.data.startTime,

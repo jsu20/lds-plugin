@@ -1,5 +1,6 @@
 // var connections = {};
 // stores this tabId
+alert('blah');
 let tabId = null;
 chrome.runtime.onConnect.addListener(function (port) {
 
@@ -48,6 +49,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         source = request.source;
         // alert(JSON.stringify(source));
     }
+    console.log('bkg');
+    console.log(request);
     // sent from DevTools, intended for saving source
     if (request.action === 'putSource') {
         alert('putSource');

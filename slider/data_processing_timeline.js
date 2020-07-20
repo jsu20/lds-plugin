@@ -331,10 +331,11 @@ function getId(request) {
     }
 }
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    console.log('got message');
+    alert('got message');
     // items = [{"lane": 0, "id": "Qin", "start": 5, "end": 205}]
-
-    if (request.tabId == tabId && request.action == 'giveSource') {
+    alert(request.action);
+    if (request.tabId == tabId && (request.action == 'giveSource' || request.action == 'broadcast')) {
+        alert(JSON.stringify(request));
         let newItem = {
             "lane": laneMap[request.method], 
             "id": getId(request), 
@@ -384,8 +385,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
 //
 chrome.runtime.sendMessage({ action: 'getSource' }, function (response) {
-    // alert('getSource devtools');
-    // alert(response.tabId);
+    alert('getSource devtools');
+    alert(response.tabId);
     console.log(response);
     tabId = response.tabId;
 
