@@ -173,7 +173,7 @@ chrome.runtime.sendMessage({ action: 'getSource' }, function (response) {
 
     string_data.push(hours + ":" + minutes + ":" + seconds);
     // generateTree(treeData, new_recs);
-    ingest_data.push(['initialCall', { baseUri: '', basePath: '' }, {}]);
+    ingest_data.push(['initialCall', { baseUri: 'initialCall', basePath: '' }, {}]);
 
     method_history.push(response.method);
 

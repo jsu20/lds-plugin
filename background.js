@@ -39,8 +39,9 @@ chrome.runtime.onConnect.addListener(function (port) {
 });
 
 let source = null; // will be set after putSource is executed
-//
+alert('bkg');
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    alert('woww');
     if (request.action === 'initialPutSource') {
         // alert(JSON.stringify(sender));
         // alert(sender.id);
@@ -49,23 +50,53 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
     // sent from DevTools, intended for saving source
     if (request.action === 'putSource') {
-        // alert('putSource');
+        alert('putSource');
         source = request.source;
         let method = request.method;
         let args = request.args;
-        chrome.runtime.sendMessage({action:'giveSource', source:source, tabId:tabId, method:method, args:args});
+        chrome.runtime.sendMessage({
+            action: 'giveSource', 
+            source: source, 
+            tabId: tabId, 
+            method: method, 
+            args: args,
+            startTime: request.startTime,
+            endTime: request.endTime
+        });
     }
     // sent from new tab, to get the source
     if(request.action === 'getSource') {
         // sending source
-        // alert('background getSource');
+        alert('background getSource');
         // alert(JSON.stringify(source));
-        sendResponse({ source: source, tabId:tabId });
+        sendResponse({ 
+            source: source,
+            tabId: tabId,
+            startTime: request.startTime,
+            endTime: request.endTime 
+        });
     }
 
     if (request.action === 'adapterCall') {
+        chrome.runtime.sendMessage({
+            action: 'giveSource', 
+            startTime: request.startTime,
+            endTime: request.endTime,
+            method: request.method,
+            name: request.name,
+            config: request.config
+        });
         // alert('adapterCall');
         // alert(request.name);
         // alert(JSON.stringify(request.config));
+    }
+
+    if (request.action === 'broadcast') {
+        chrome.runtime.sendMessage({ 
+            action: 'giveSource',
+            startTime: event.data.startTime,
+            endTime: event.data.endTime,
+            method: event.data.method
+        });
     }
 });
