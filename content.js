@@ -42,7 +42,7 @@ window.addEventListener("message", function (event) {
         }
 
         if (event.data.type == 'ADAPTER_CALL') {
-            alert('ADApter');
+            alert('content_ADApter');
             chrome.runtime.sendMessage({ 
                 action: 'adapterCall', 
                 config: event.data.config, 
@@ -55,7 +55,7 @@ window.addEventListener("message", function (event) {
         }
 
         if (event.data.type == 'BROADCAST') {
-            alert('broadcast');
+            alert('content_broadcast');
             chrome.runtime.sendMessage({ 
                 action: 'broadcast',
                 startTime: event.data.startTime,

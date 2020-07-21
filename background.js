@@ -42,6 +42,7 @@ let source = null; // will be set after putSource is executed
 alert('bkg');
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     alert('woww');
+    alert(JSON.stringify(request));
     if (request.action === 'initialPutSource') {
         // alert(JSON.stringify(sender));
         // alert(sender.id);
@@ -80,6 +81,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
 
     if (request.action === 'adapterCall') {
+        alert('bkg_adapter');
         chrome.runtime.sendMessage({
             action: 'giveSource', 
             startTime: request.startTime,
@@ -95,6 +97,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
 
     if (request.action === 'broadcast') {
+        alert('bkg_broadcast');
         chrome.runtime.sendMessage({ 
             action: 'giveSource',
             startTime: event.data.startTime,

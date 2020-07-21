@@ -230,7 +230,7 @@ function generateTimeline(lanes, items, timeBegin, timeEnd) {
         .attr("class", function(d) {return "miniItem" + d.lane;})
         .attr("x", function(d) {return x(d.start);})
         .attr("y", function(d) {return y2(d.lane + .5) - 5;})
-        .attr("width", function(d) {return x(d.end - d.start);})
+        .attr("width", function(d) {console.log('width');console.log(x(d.end) - x(d.start));return Math.max(5, x(d.end) - x(d.start));})
         .attr("height", 10);
 
     //mini labels
@@ -325,9 +325,9 @@ function getId(request) {
     if (request.method == 'adapterCall') {
         return request.name;
     } else if (request.method == 'storeIngest') {
-        return (request.args.key == '') ? 'aura' : request.args.key;
+        return (request.args[0] == '') ? 'aura' : request.args.key;
     } else if (request.method == 'storeBroadcast') {
-        return 'b';
+        return 'broadcast';
     }
 }
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -336,13 +336,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     alert(request.action);
     console.log('request');
     console.log(request);
-    if (request.tabId == tabId && (request.action == 'giveSource' || request.action == 'broadcast')) {
+    if (request.tabId == tabId && request.action == 'giveSource') {
         alert(JSON.stringify(request));
+        let add = (request.endTime == request.startTime) ? 1 : 0;
         let newItem = {
             "lane": laneMap[request.method], 
             "id": getId(request), 
             "start": request.startTime,
-             "end": request.endTime
+             "end": request.endTime + add
             };
         items.push(newItem);
         console.log('items');
