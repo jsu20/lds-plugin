@@ -5,10 +5,8 @@ window.addEventListener("message", function (event) {
     // only accept messages from ourselves
     if (event.source !== window && event.source !== window.frames[0])
         return;
-    alert('asdf');
-    console.log('event');
-    console.log(event);
-    alert(JSON.stringify(event));
+    // alert('asdf');
+    // alert(JSON.stringify(event));
     if (event.data.type) {
         if (event.data.type == "INITIAL_CACHE_CONTENTS") {
             // get source

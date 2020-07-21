@@ -334,6 +334,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     alert('got message');
     // items = [{"lane": 0, "id": "Qin", "start": 5, "end": 205}]
     alert(request.action);
+    console.log('request');
+    console.log(request);
     if (request.tabId == tabId && (request.action == 'giveSource' || request.action == 'broadcast')) {
         alert(JSON.stringify(request));
         let newItem = {

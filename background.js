@@ -1,6 +1,5 @@
 // var connections = {};
 // stores this tabId
-alert('blah');
 let tabId = null;
 chrome.runtime.onConnect.addListener(function (port) {
 
@@ -87,7 +86,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             endTime: request.endTime,
             method: request.method,
             name: request.name,
-            config: request.config
+            config: request.config,
+            tabId: tabId
         });
         // alert('adapterCall');
         // alert(request.name);
@@ -99,7 +99,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             action: 'giveSource',
             startTime: event.data.startTime,
             endTime: event.data.endTime,
-            method: event.data.method
+            method: event.data.method,
+            tabId: tabId
         });
     }
 });
